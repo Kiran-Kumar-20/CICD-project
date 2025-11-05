@@ -1,0 +1,31 @@
+# Jenkins Home Directory
+jenkins_home/
+
+# Docker volumes
+volumes/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Build artifacts
+dist/
+build/
+*.war
+*.jar
+
+# Environment files with secrets
+.env.local
+.env.*.local
