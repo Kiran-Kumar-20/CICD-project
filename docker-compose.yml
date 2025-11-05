@@ -1,0 +1,42 @@
+services:
+  jenkins:
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    container_name: jenkins-cicd
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JENKINS_OPTS=--prefix=/jenkins
+    networks:
+      - cicd-network
+    restart: unless-stopped
+
+  webapp:
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    container_name: webapp-server
+    ports:
+      - "80:80"
+    volumes:
+      - ./webapp/html:/usr/share/nginx/html:ro
+    networks:
+      - cicd-network
+    restart: unless-stopped
+    depends_on:
+      - jenkins
+
+networks:
+  cicd-network:
+    driver: bridge
+
+volumes:
+  jenkins_home:
+    driver: local

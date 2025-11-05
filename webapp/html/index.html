@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Web Development Environment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Automated Web Development Environment</h1>
+            <p class="subtitle">Powered by Docker, Git, GitHub, and Jenkins</p>
+        </header>
+
+        <main>
+            <section class="welcome-section">
+                <h2>Welcome to Your CI/CD Pipeline!</h2>
+                <p>This is an automated web development environment running on Docker Desktop with WSL2.</p>
+            </section>
+
+            <section class="features">
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">🐳</div>
+                        <h3>Docker Containers</h3>
+                        <p>Lightweight and portable deployment using Docker Desktop with WSL2 backend</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🔧</div>
+                        <h3>Jenkins CI/CD</h3>
+                        <p>Automated build, test, and deployment pipelines</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🌐</div>
+                        <h3>Nginx Web Server</h3>
+                        <p>High-performance web server for hosting applications</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">📦</div>
+                        <h3>Git Integration</h3>
+                        <p>Seamless version control with GitHub</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="status">
+                <h2>System Status</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-indicator active"></span>
+                        <span>Web Server: Active</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-indicator active"></span>
+                        <span>Jenkins: Running on port 8080</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-indicator active"></span>
+                        <span>Docker: WSL2 Backend</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="links">
+                <h2>Quick Links</h2>
+                <div class="button-group">
+                    <a href="http://localhost:8080/jenkins" class="btn btn-primary" target="_blank">Open Jenkins Dashboard</a>
+                    <a href="https://github.com/Kiran-Kumar-20/CICD-project" class="btn btn-secondary" target="_blank">View GitHub Repository</a>
+                </div>
+            </section>
+
+            <section class="info">
+                <h2>Getting Started</h2>
+                <ol>
+                    <li>Ensure Docker Desktop is running with WSL2 backend enabled</li>
+                    <li>Run <code>docker-compose up -d</code> to start all services</li>
+                    <li>Access Jenkins at <a href="http://localhost:8080/jenkins">http://localhost:8080/jenkins</a></li>
+                    <li>Access this web app at <a href="http://localhost">http://localhost</a></li>
+                    <li>Configure your Jenkins pipeline using the provided Jenkinsfile</li>
+                </ol>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 CI/CD Project | Docker Desktop with WSL2</p>
+            <p class="build-info">Build: <span id="build-number">v1.0.0</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
