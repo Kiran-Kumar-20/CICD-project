@@ -47,6 +47,9 @@ document.addEventListener('click', function(e) {
     }
 });
 
+// Initialize Jenkins status check
+setTimeout(checkJenkinsStatus, 2000);
+
 // Check if Jenkins is accessible
 function checkJenkinsStatus() {
     // This is a simple check - in production you'd want proper health checks
