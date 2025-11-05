@@ -1,4 +1,5 @@
 services:
+<<<<<<< HEAD
   jenkins:
     build:
       context: ./jenkins
@@ -40,3 +41,12 @@ networks:
 volumes:
   jenkins_home:
     driver: local
+=======
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cicd-project:latest
+    ports:
+      - "8080:8080"
+>>>>>>> 38e038b (Your descriptive commit message here)
