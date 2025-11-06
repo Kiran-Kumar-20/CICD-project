@@ -1,5 +1,4 @@
 services:
-<<<<<<< HEAD
   jenkins:
     build:
       context: ./jenkins
@@ -8,7 +7,7 @@ services:
     privileged: true
     user: root
     ports:
-      - "8080:8080"
+      - "9090:8080"
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
@@ -25,7 +24,7 @@ services:
       dockerfile: Dockerfile
     container_name: webapp-server
     ports:
-      - "80:80"
+      - "8081:80"
     volumes:
       - ./webapp/html:/usr/share/nginx/html:ro
     networks:
@@ -41,12 +40,3 @@ networks:
 volumes:
   jenkins_home:
     driver: local
-=======
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: cicd-project:latest
-    ports:
-      - "8080:8080"
->>>>>>> 38e038b (Your descriptive commit message here)

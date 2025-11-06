@@ -59,14 +59,14 @@ docker compose up -d
 
 ### 3. Access the Services
 
-Once the setup completes, you can access:
+Once the setup completes, you can access (ports chosen to avoid local conflicts):
 
-- **Web Application**: http://localhost
-- **Jenkins Dashboard**: http://localhost:8080/jenkins
+- **Web Application**: http://localhost:8081
+- **Jenkins Dashboard**: http://localhost:9090/jenkins
 
 ### 4. Configure Jenkins
 
-1. Access Jenkins at http://localhost:8080/jenkins
+1. Access Jenkins at http://localhost:9090/jenkins
 2. Use the initial admin password displayed by the setup script (or retrieve it with):
    ```bash
    docker exec jenkins-cicd cat /var/jenkins_home/secrets/initialAdminPassword
@@ -202,11 +202,11 @@ docker compose up -d
 - Restart Docker Desktop
 
 ### Port Already in Use
-If ports 80 or 8080 are in use, modify `docker-compose.yml`:
+If ports 80 or 8080 are in use, modify `docker-compose.yml` (this project defaults to 8081 for web app and 9090 for Jenkins):
 ```yaml
 ports:
-  - "8081:8080"  # Change Jenkins port
-  - "8000:80"    # Change web app port
+  - "9090:8080"  # Jenkins port on host
+  - "8081:80"    # Web app port on host
 ```
 
 ### Jenkins Not Accessible

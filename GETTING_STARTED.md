@@ -27,8 +27,8 @@ scripts\setup.bat
 
 ### Step 3: Access Services
 Wait ~30 seconds, then open:
-- **Web App**: http://localhost
-- **Jenkins**: http://localhost:8080/jenkins
+- **Web App**: http://localhost:8081
+- **Jenkins**: http://localhost:9090/jenkins
 
 ### Step 4: Get Jenkins Password
 ```bash
@@ -118,7 +118,7 @@ docker compose up -d
 
 ## 🚀 Set Up CI/CD Pipeline
 
-1. Access Jenkins at http://localhost:8080/jenkins
+1. Access Jenkins at http://localhost:9090/jenkins
 2. Click "New Item"
 3. Name: "webapp-pipeline"
 4. Type: "Pipeline"

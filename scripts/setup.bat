@@ -80,8 +80,8 @@ echo ========================================
 echo.
 echo Your CI/CD environment is now running:
 echo.
-echo   Web Application: http://localhost
-echo   Jenkins Dashboard: http://localhost:8080/jenkins
+echo   Web Application: http://localhost:8081
+echo   Jenkins Dashboard: http://localhost:9090/jenkins
 echo.
 
 REM Try to get Jenkins initial password

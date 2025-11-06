@@ -53,8 +53,8 @@ docker compose up -d
 
 Wait 30 seconds for services to initialize, then access:
 
-- **Web App**: http://localhost
-- **Jenkins**: http://localhost:8080/jenkins
+- **Web App**: http://localhost:8081
+- **Jenkins**: http://localhost:9090/jenkins
 
 ### Step 5: Configure Jenkins
 

@@ -50,19 +50,19 @@ pipeline {
                 echo 'Deploying application...'
                 script {
                     sh '''
-                        # Stop and remove old container if exists
-                        docker stop webapp-server 2>/dev/null || true
-                        docker rm webapp-server 2>/dev/null || true
-                        
-                        # Deploy new container
-                        docker run -d \
+                        set -e
+                        # If a compose-managed container is running, update its content in-place
+                        if docker ps --format '{{.Names}}' | grep -q '^webapp-server$'; then
+                          echo "webapp-server is running; updating static files via docker cp"
+                          docker cp webapp/html/. webapp-server:/usr/share/nginx/html/
+                        else
+                          echo "webapp-server not running; starting a fresh container from the built image"
+                          docker run -d \
                             --name webapp-server \
                             -p ${WEBAPP_PORT}:80 \
-                            --network cicd-project_cicd-network \
-                            -v $(pwd)/webapp/html:/usr/share/nginx/html:ro \
                             ${DOCKER_IMAGE}:latest
-                        
-                        echo "Application deployed successfully!"
+                        fi
+                        echo "Deployment step finished"
                     '''
                 }
             }
@@ -74,7 +74,8 @@ pipeline {
                 script {
                     sh '''
                         sleep 5
-                        curl -f http://localhost:${WEBAPP_PORT}/ || exit 1
+                        # Check the webapp container directly on the Docker network
+                        curl -f http://webapp-server:80/ || exit 1
                         echo "Health check passed!"
                     '''
                 }

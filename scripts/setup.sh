@@ -84,8 +84,8 @@ echo -e "${BLUE}========================================${NC}"
 echo ""
 echo -e "${GREEN}Your CI/CD environment is now running:${NC}"
 echo ""
-echo -e "  📦 Web Application: ${BLUE}http://localhost${NC}"
-echo -e "  🔧 Jenkins Dashboard: ${BLUE}http://localhost:8080/jenkins${NC}"
+echo -e "  📦 Web Application: ${BLUE}http://localhost:8081${NC}"
+echo -e "  🔧 Jenkins Dashboard: ${BLUE}http://localhost:9090/jenkins${NC}"
 echo ""
 
 # Try to get Jenkins initial password
