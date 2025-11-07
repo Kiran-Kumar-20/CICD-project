@@ -200,4 +200,4 @@ git push origin feature/your-feature
 MIT
 
 ## Author 👤
-Kiran Kumar
+Kiran Kumar Reddy
