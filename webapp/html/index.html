@@ -3,88 +3,392 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CI/CD Web Development Environment</title>
+    <title>Automated CI/CD Pipeline - Professional DevOps Solution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>CI/CD Pipeline</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#pipeline">Pipeline</a></li>
+                <li><a href="#tech-stack">Tech Stack</a></li>
+                <li><a href="#features">Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1 class="glitch" data-text="Automated Web Development">Automated Web Development</h1>
+                <h2 class="hero-subtitle">CI/CD Pipeline Environment</h2>
+                <p class="hero-description">
+                    Enterprise-grade DevOps solution powered by Docker, Jenkins, Git, and Nginx
+                </p>
+                <div class="hero-buttons">
+                    <a href="http://localhost:9090/jenkins" target="_blank" class="cta-button primary">
+                        <i class="fas fa-play"></i> Launch Jenkins
+                    </a>
+                    <a href="https://github.com/Kiran-Kumar-20/CICD-project" target="_blank" class="cta-button secondary">
+                        <i class="fab fa-github"></i> View Source
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual slide-in-right">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="terminal-btn red"></span>
+                        <span class="terminal-btn yellow"></span>
+                        <span class="terminal-btn green"></span>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="prompt">$</span> docker-compose up -d</p>
+                        <p class="success"><i class="fas fa-check"></i> Jenkins container started</p>
+                        <p class="success"><i class="fas fa-check"></i> Web server running</p>
+                        <p class="info"><i class="fas fa-info-circle"></i> Pipeline ready at port 9090</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-subtitle">Microservices-based containerized environment</p>
+            
+            <div class="architecture-diagram">
+                <div class="arch-layer">
+                    <div class="arch-box slide-up" style="animation-delay: 0.1s">
+                        <i class="fab fa-github fa-3x"></i>
+                        <h3>GitHub</h3>
+                        <p>Version Control</p>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <div class="arch-box slide-up" style="animation-delay: 0.3s">
+                        <i class="fas fa-code-branch fa-3x"></i>
+                        <h3>Jenkins CI/CD</h3>
+                        <p>Automated Pipeline</p>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer arch-multiple">
+                    <div class="arch-box slide-up" style="animation-delay: 0.5s">
+                        <i class="fab fa-docker fa-3x"></i>
+                        <h3>Docker Build</h3>
+                        <p>Containerization</p>
+                    </div>
+                    <div class="arch-box slide-up" style="animation-delay: 0.7s">
+                        <i class="fas fa-vial fa-3x"></i>
+                        <h3>Testing</h3>
+                        <p>Validation</p>
+                    </div>
+                </div>
+                <div class="arch-arrow">↓</div>
+                <div class="arch-layer">
+                    <div class="arch-box slide-up" style="animation-delay: 0.9s">
+                        <i class="fas fa-server fa-3x"></i>
+                        <h3>Nginx Server</h3>
+                        <p>Production Deployment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pipeline Stages -->
+    <section id="pipeline" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">5-Stage Pipeline Process</h2>
+            <p class="section-subtitle">Fully automated build, test, and deployment workflow</p>
+            
+            <div class="pipeline-stages">
+                <div class="stage-card" data-stage="1">
+                    <div class="stage-number">01</div>
+                    <i class="fas fa-download fa-2x"></i>
+                    <h3>Checkout</h3>
+                    <p>Pull latest code from GitHub repository</p>
+                    <div class="stage-details">
+                        <span class="tech-badge">Git</span>
+                        <span class="tech-badge">SCM</span>
+                    </div>
+                </div>
+                
+                <div class="stage-card" data-stage="2">
+                    <div class="stage-number">02</div>
+                    <i class="fas fa-hammer fa-2x"></i>
+                    <h3>Build</h3>
+                    <p>Create Docker image with versioning</p>
+                    <div class="stage-details">
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Build</span>
+                    </div>
+                </div>
+                
+                <div class="stage-card" data-stage="3">
+                    <div class="stage-number">03</div>
+                    <i class="fas fa-check-circle fa-2x"></i>
+                    <h3>Test</h3>
+                    <p>Validate files and configurations</p>
+                    <div class="stage-details">
+                        <span class="tech-badge">Validation</span>
+                        <span class="tech-badge">QA</span>
+                    </div>
+                </div>
+                
+                <div class="stage-card" data-stage="4">
+                    <div class="stage-number">04</div>
+                    <i class="fas fa-rocket fa-2x"></i>
+                    <h3>Deploy</h3>
+                    <p>Deploy to production container</p>
+                    <div class="stage-details">
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Deploy</span>
+                    </div>
+                </div>
+                
+                <div class="stage-card" data-stage="5">
+                    <div class="stage-number">05</div>
+                    <i class="fas fa-heartbeat fa-2x"></i>
+                    <h3>Health Check</h3>
+                    <p>Verify deployment success</p>
+                    <div class="stage-details">
+                        <span class="tech-badge">Monitoring</span>
+                        <span class="tech-badge">Verification</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="tech-stack" class="section">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <p class="section-subtitle">Industry-leading tools and platforms</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item zoom-in">
+                    <div class="tech-icon docker">
+                        <i class="fab fa-docker fa-4x"></i>
+                    </div>
+                    <h3>Docker</h3>
+                    <p>Containerization Platform</p>
+                    <span class="version">Desktop + WSL2</span>
+                </div>
+                
+                <div class="tech-item zoom-in" style="animation-delay: 0.1s">
+                    <div class="tech-icon jenkins">
+                        <i class="fab fa-jenkins fa-4x"></i>
+                    </div>
+                    <h3>Jenkins</h3>
+                    <p>CI/CD Automation Server</p>
+                    <span class="version">LTS + Plugins</span>
+                </div>
+                
+                <div class="tech-item zoom-in" style="animation-delay: 0.2s">
+                    <div class="tech-icon nginx">
+                        <i class="fas fa-server fa-4x"></i>
+                    </div>
+                    <h3>Nginx</h3>
+                    <p>High-Performance Web Server</p>
+                    <span class="version">Alpine Linux</span>
+                </div>
+                
+                <div class="tech-item zoom-in" style="animation-delay: 0.3s">
+                    <div class="tech-icon git">
+                        <i class="fab fa-git-alt fa-4x"></i>
+                    </div>
+                    <h3>Git</h3>
+                    <p>Version Control System</p>
+                    <span class="version">Distributed VCS</span>
+                </div>
+                
+                <div class="tech-item zoom-in" style="animation-delay: 0.4s">
+                    <div class="tech-icon github">
+                        <i class="fab fa-github fa-4x"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Code Repository & Hosting</p>
+                    <span class="version">Cloud Platform</span>
+                </div>
+                
+                <div class="tech-item zoom-in" style="animation-delay: 0.5s">
+                    <div class="tech-icon wsl">
+                        <i class="fab fa-linux fa-4x"></i>
+                    </div>
+                    <h3>WSL2</h3>
+                    <p>Windows Subsystem for Linux</p>
+                    <span class="version">Backend Engine</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section dark-section">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Production-ready capabilities</p>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fas fa-sync-alt fa-3x"></i>
+                    <h3>Automated Workflows</h3>
+                    <p>End-to-end automation from code commit to production deployment</p>
+                </div>
+                
+                <div class="feature-box">
+                    <i class="fas fa-shield-alt fa-3x"></i>
+                    <h3>Isolated Environments</h3>
+                    <p>Docker containers ensure consistent and secure deployments</p>
+                </div>
+                
+                <div class="feature-box">
+                    <i class="fas fa-tachometer-alt fa-3x"></i>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Live health checks and status indicators for all services</p>
+                </div>
+                
+                <div class="feature-box">
+                    <i class="fas fa-code-branch fa-3x"></i>
+                    <h3>Version Control</h3>
+                    <p>Git integration with automatic build triggers on push</p>
+                </div>
+                
+                <div class="feature-box">
+                    <i class="fas fa-bolt fa-3x"></i>
+                    <h3>Fast Deployment</h3>
+                    <p>Quick container startup and efficient resource utilization</p>
+                </div>
+                
+                <div class="feature-box">
+                    <i class="fas fa-expand-arrows-alt fa-3x"></i>
+                    <h3>Scalable Infrastructure</h3>
+                    <p>Easy to scale services horizontally with Docker Compose</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Status -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Live System Status</h2>
+            <div class="status-dashboard">
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Web Server</h3>
+                    <div class="status-indicator running">
+                        <span class="pulse"></span>
+                        <span>RUNNING</span>
+                    </div>
+                    <p>Port: 8081 | Nginx Alpine</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fab fa-jenkins"></i>
+                    </div>
+                    <h3>Jenkins CI/CD</h3>
+                    <div class="status-indicator running">
+                        <span class="pulse"></span>
+                        <span>RUNNING</span>
+                    </div>
+                    <p>Port: 9090 | LTS Version</p>
+                </div>
+                
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fab fa-docker"></i>
+                    </div>
+                    <h3>Docker Engine</h3>
+                    <div class="status-indicator running">
+                        <span class="pulse"></span>
+                        <span>ACTIVE</span>
+                    </div>
+                    <p>WSL2 Backend | 2 Containers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Access -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to Explore?</h2>
+                <p>Access the Jenkins dashboard or view the complete source code on GitHub</p>
+                <div class="cta-buttons">
+                    <a href="http://localhost:9090/jenkins" target="_blank" class="cta-btn primary-btn">
+                        <i class="fas fa-external-link-alt"></i> Open Jenkins Dashboard
+                    </a>
+                    <a href="https://github.com/Kiran-Kumar-20/CICD-project" target="_blank" class="cta-btn secondary-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-rocket"></i> CI/CD Pipeline</h3>
+                    <p>Professional DevOps automation solution demonstrating modern development practices.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technologies</h3>
+                    <ul>
+                        <li>Docker & Docker Compose</li>
+                        <li>Jenkins CI/CD</li>
+                        <li>Nginx Web Server</li>
+                        <li>Git & GitHub</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="http://localhost:9090/jenkins" target="_blank">Jenkins Dashboard</a></li>
+                        <li><a href="https://github.com/Kiran-Kumar-20/CICD-project" target="_blank">GitHub Repository</a></li>
+                        <li><a href="#architecture">Architecture</a></li>
+                        <li><a href="#pipeline">Pipeline</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 CI/CD Project | Automated Web Development Environment</p>
+                <p class="build-info">Build Version: <span id="build-number">v2.0.0</span> | Deployed: <span id="deploy-time"></span></p>
+            </div>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
-            </header>
-
-            <main>
-                <section class="welcome-section">
-                    <h2>Welcome to Your CI/CD Pipeline!</h2>
-                    <p>This is an automated web development environment running on Docker Desktop with WSL2.</p>
-                </section>
-
-                <section class="features">
-                    <h2>Features</h2>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="icon">🐳</div>
-                            <h3>Docker Containers</h3>
-                            <p>Lightweight and portable deployment using Docker Desktop with WSL2 backend</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">🔧</div>
-                            <h3>Jenkins CI/CD</h3>
-                            <p>Automated build, test, and deployment pipelines</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">🌐</div>
-                            <h3>Nginx Web Server</h3>
-                            <p>High-performance web server for hosting applications</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="icon">📦</div>
-                            <h3>Git Integration</h3>
-                            <p>Seamless version control with GitHub</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="status">
-                    <h2>System Status</h2>
-                    <div class="status-grid">
-                        <div class="status-item">
-                            <span class="status-indicator active"></span>
-                            <span>Web Server: Active</span>
-                        </div>
-                        <div class="status-item">
-                            <span class="status-indicator active"></span>
-                            <span>Jenkins: Running on port 8080</span>
-                        </div>
-                        <div class="status-item">
-                            <span class="status-indicator active"></span>
-                            <span>Docker: WSL2 Backend</span>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="links">
-                    <h2>Quick Links</h2>
-                    <div class="button-group">
-                        <a href="http://localhost:9090/jenkins" class="btn btn-primary" target="_blank">Open Jenkins Dashboard</a>
-                        <a href="https://github.com/Kiran-Kumar-20/CICD-project" class="btn btn-secondary" target="_blank">View GitHub Repository</a>
-                    </div>
-                </section>
-
-                <section class="info">
-                    <h2>Getting Started</h2>
-                    <ol>
-                        <li>Ensure Docker Desktop is running with WSL2 backend enabled</li>
-                        <li>Run <code>docker-compose up -d</code> to start all services</li>
-                        <li>Access Jenkins at <a href="http://localhost:8080/jenkins">http://localhost:8080/jenkins</a></li>
-                        <li>Access this web app at <a href="http://localhost">http://localhost</a></li>
-                        <li>Configure your Jenkins pipeline using the provided Jenkinsfile</li>
-                    </ol>
-                </section>
-            </main>
-
-            <footer>
-                <p>&copy; 2025 CI/CD Project | Docker Desktop with WSL2</p>
-                <p class="build-info">Build: <span id="build-number">v1.0.0</span></p>
-            </footer>
-        </div>
-
-        <script src="script.js"></script>
-    </body>
-    </html>
