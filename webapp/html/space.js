@@ -6,6 +6,48 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSmoothScroll();
   highlightActiveNav();
   updateBuildInfo();
+  setupThemeToggle();
+  animatePipelineProgress();
+function animatePipelineProgress() {
+  const progress = document.querySelector('.pipeline-progress-line');
+  if (!progress) return;
+  // Reset animation
+  progress.style.animation = 'none';
+  void progress.offsetWidth; // trigger reflow
+  progress.style.animation = '';
+  // Animate when in view
+  function onScroll() {
+    const rect = progress.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      progress.classList.add('animate');
+      progress.style.animation = '';
+      window.removeEventListener('scroll', onScroll);
+    }
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+}
+function setupThemeToggle() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  // Load saved theme
+  const saved = localStorage.getItem('space-theme');
+  if (saved === 'nebula') document.body.classList.add('nebula-theme');
+  else document.body.classList.remove('nebula-theme');
+  updateToggleIcons();
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('nebula-theme');
+    const isNebula = document.body.classList.contains('nebula-theme');
+    localStorage.setItem('space-theme', isNebula ? 'nebula' : 'galaxy');
+    updateToggleIcons();
+  });
+}
+
+function updateToggleIcons() {
+  const isNebula = document.body.classList.contains('nebula-theme');
+  document.querySelectorAll('.theme-toggle .galaxy').forEach(el => el.style.opacity = isNebula ? '0' : '1');
+  document.querySelectorAll('.theme-toggle .nebula').forEach(el => el.style.opacity = isNebula ? '1' : '0');
+}
 });
 
 function generateStars(count){

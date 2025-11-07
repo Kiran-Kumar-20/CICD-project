@@ -1,5 +1,45 @@
 /* ================= Space Theme (clean) ================= */
 :root { --primary-color:#667eea; --secondary-color:#764ba2; --accent-color:#f093fb; --dark-bg:#0b0f1a; --darker-bg:#070b14; --light-text:#fff; --muted-text:rgba(255,255,255,.75); --success:#10b981; }
+body.nebula-theme {
+	--primary-color: #ffb347;
+	--secondary-color: #ff5e62;
+	--accent-color: #ffd6e0;
+	--dark-bg: #1a1333;
+	--darker-bg: #0d0820;
+	--light-text: #fffbe7;
+	--muted-text: rgba(255,251,231,0.75);
+	--success: #f093fb;
+	background: radial-gradient(1200px 600px at 80% 10%,#ffb347 0%,transparent 60%),radial-gradient(1000px 800px at 10% 20%,#ff5e62 0%,transparent 55%),linear-gradient(180deg,#1a1333 0%,#0d0820 100%);
+}
+.theme-toggle {
+	background: rgba(255,255,255,0.08);
+	border: 1px solid rgba(255,255,255,0.15);
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 1.5rem;
+	cursor: pointer;
+	transition: background 0.2s, border 0.2s;
+	position: relative;
+	z-index: 1100;
+}
+.theme-toggle:hover {
+	background: var(--accent-color);
+	border-color: var(--primary-color);
+}
+.toggle-icon {
+	position: absolute;
+	opacity: 0;
+	transition: opacity 0.3s;
+	color: var(--accent-color);
+	font-size: 1.2rem;
+}
+.theme-toggle .galaxy { opacity: 1; }
+body.nebula-theme .theme-toggle .galaxy { opacity: 0; }
+body.nebula-theme .theme-toggle .nebula { opacity: 1; }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:var(--light-text);background:radial-gradient(1200px 600px at 10% 10%,#142042 0%,transparent 60%),radial-gradient(1000px 800px at 90% 20%,#1f1450 0%,transparent 55%),linear-gradient(180deg,#0b0f1a 0%,#070b14 100%);min-height:100vh;overflow-x:hidden}
@@ -10,6 +50,15 @@ a{color:var(--light-text);text-decoration:none;transition:color .25s ease}a:hove
 
 /* Background */
 .animated-bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.constellation-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	z-index: 2;
+}
 .planet{position:absolute;border-radius:50%;filter:blur(.2px);background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.18),rgba(255,255,255,.06) 45%,transparent 60%),radial-gradient(circle at 70% 70%,rgba(255,255,255,.06),rgba(255,255,255,.02) 40%,transparent 65%),linear-gradient(135deg,#5a3fd6,#c35af8);box-shadow:inset -40px -40px 80px rgba(0,0,0,.45),0 0 60px rgba(102,126,234,.25)}
 .p1{width:260px;height:260px;top:6%;left:6%;animation:drift 26s linear infinite alternate}.p2{width:360px;height:360px;top:58%;right:5%;animation:drift 34s linear infinite alternate}.p3{width:160px;height:160px;bottom:8%;left:55%;animation:drift 22s linear infinite alternate}
 @keyframes drift{to{transform:translate3d(30px,-20px,0)}}
@@ -50,6 +99,29 @@ a{color:var(--light-text);text-decoration:none;transition:color .25s ease}a:hove
 .arch-box:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(102,126,234,.25)}
 .arch-arrow{color:var(--accent-color);font-size:1.6rem;animation:bounce 2s infinite}@keyframes bounce{50%{transform:translateY(8px)}}
 .pipeline-stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.pipeline-progress-line {
+	position: absolute;
+	left: 0; right: 0;
+	top: 50%;
+	height: 6px;
+	background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+	border-radius: 3px;
+	z-index: 1;
+	transform: translateY(-50%);
+	animation: pipeline-progress-animate 2.5s cubic-bezier(.4,0,.2,1) forwards;
+	opacity: 0.85;
+}
+
+@keyframes pipeline-progress-animate {
+	0% { width: 0; opacity: 0.2; }
+	30% { width: 30%; opacity: 0.7; }
+	60% { width: 60%; opacity: 1; }
+	100% { width: 100%; opacity: 0.85; }
+}
+
+.pipeline-stages {
+	position: relative;
+}
 .stage-card{position:relative;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);border-radius:14px;padding:1.3rem;text-align:center;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
 .stage-card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(240,147,251,.2);border-color:rgba(240,147,251,.45)}
 .stage-number{position:absolute;top:10px;right:12px;color:rgba(255,255,255,.15);font-weight:800}
