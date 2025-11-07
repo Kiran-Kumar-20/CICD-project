@@ -1,6 +1,13 @@
 pipeline {
     agent any
     
+    triggers {
+        // Poll SCM roughly every 2 minutes (hashed per job)
+        pollSCM('H/2 * * * *')
+        // Tip: If you later switch to GitHub webhooks, you can use:
+        // githubPush()
+    }
+    
     environment {
         DOCKER_IMAGE = 'webapp'
         DOCKER_TAG = "${BUILD_NUMBER}"
