@@ -1,198 +1,393 @@
-# Automated Web Development Environment using Docker Desktop
+# Automated Web Development Environment# Automated Web Development Environment using Docker Desktop
 
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
+
+
+A CI/CD pipeline using Docker, Git, GitHub, Jenkins, and Nginx.[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
+
 [![WSL2](https://img.shields.io/badge/WSL2-Compatible-green.svg)](https://docs.microsoft.com/en-us/windows/wsl/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-red.svg)](https://www.jenkins.io/)
 
-An automated web development environment with CI/CD pipeline using Git, GitHub, Jenkins, and Nginx web server, all running in Docker containers with WSL2 backend support.
+## Prerequisites[![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-red.svg)](https://www.jenkins.io/)
 
-## 🚀 Features
+
+
+- **Docker Desktop** (latest version with WSL2 enabled)An automated web development environment with CI/CD pipeline using Git, GitHub, Jenkins, and Nginx web server, all running in Docker containers with WSL2 backend support.
+
+- **Git** installed
+
+- Windows 10/11, macOS, or Linux## 🚀 Features
+
+- At least 4GB RAM, 10GB disk space
 
 - **Docker-based Setup**: Completely containerized environment using Docker Desktop with WSL2
-- **Jenkins CI/CD**: Automated build, test, and deployment pipeline
-- **Nginx Web Server**: High-performance web server replacing Apache
-- **Git Integration**: Seamless version control with GitHub
-- **Easy Setup**: One-command setup scripts for Windows and Linux/WSL2
-- **Production-Ready**: Includes health checks, logging, and monitoring
 
-## 📋 Prerequisites
+## Quick Start- **Jenkins CI/CD**: Automated build, test, and deployment pipeline
+
+- **Nginx Web Server**: High-performance web server replacing Apache
+
+### 1. Clone the Repository- **Git Integration**: Seamless version control with GitHub
+
+- **Easy Setup**: One-command setup scripts for Windows and Linux/WSL2
+
+```bash- **Production-Ready**: Includes health checks, logging, and monitoring
+
+git clone https://github.com/Kiran-Kumar-20/CICD-project.git
+
+cd CICD-project## 📋 Prerequisites
+
+```
 
 ### Required
-- **Docker Desktop** (latest version)
-  - Download from: https://www.docker.com/products/docker-desktop/
-  - Ensure WSL2 backend is enabled (Settings → General → Use WSL 2 based engine)
-- **Git** (for version control)
-  - Download from: https://git-scm.com/downloads
 
-### System Requirements
-- Windows 10/11 with WSL2 enabled, macOS, or Linux
-- At least 4GB RAM (8GB recommended)
-- 10GB free disk space
+### 2. Start Docker Desktop- **Docker Desktop** (latest version)
+
+  - Download from: https://www.docker.com/products/docker-desktop/
+
+Ensure Docker Desktop is running before proceeding.  - Ensure WSL2 backend is enabled (Settings → General → Use WSL 2 based engine)
+
+- **Git** (for version control)
+
+### 3. Start Services  - Download from: https://git-scm.com/downloads
+
+
+
+**Windows (PowerShell):**### System Requirements
+
+```powershell- Windows 10/11 with WSL2 enabled, macOS, or Linux
+
+scripts\setup.bat- At least 4GB RAM (8GB recommended)
+
+```- 10GB free disk space
+
 - Docker Desktop running
 
-## 🔧 Quick Start
+**Linux/WSL2:**
 
-### 1. Clone the Repository
+```bash## 🔧 Quick Start
 
-```bash
-git clone https://github.com/Kiran-Kumar-20/CICD-project.git
-cd CICD-project
-```
-
-### 2. Run Setup Script
-
-**For Linux/WSL2:**
-```bash
 ./scripts/setup.sh
+
+```### 1. Clone the Repository
+
+
+
+**Manual Start:**```bash
+
+```bashgit clone https://github.com/Kiran-Kumar-20/CICD-project.git
+
+docker compose up -dcd CICD-project
+
+``````
+
+
+
+### 4. Access Services### 2. Run Setup Script
+
+
+
+- **Web Application**: http://localhost:8081**For Linux/WSL2:**
+
+- **Jenkins Dashboard**: http://localhost:9090/jenkins```bash
+
+./scripts/setup.sh
+
+### 5. Get Jenkins Initial Password```
+
+
+
+```powershell**For Windows (CMD/PowerShell):**
+
+docker exec jenkins-cicd cat /var/jenkins_home/secrets/initialAdminPassword```cmd
+
+```scripts\setup.bat
+
 ```
 
-**For Windows (CMD/PowerShell):**
-```cmd
-scripts\setup.bat
+Copy the password, open Jenkins, and complete the setup wizard:
+
+1. Paste the password**Manual Setup (Alternative):**
+
+2. Install suggested plugins```bash
+
+3. Create your admin userdocker compose build
+
+4. Click "Save and Finish"docker compose up -d
+
 ```
 
-**Manual Setup (Alternative):**
-```bash
-docker compose build
-docker compose up -d
-```
+## Setting Up the Pipeline
 
 ### 3. Access the Services
 
+### 1. Configure GitHub Credentials in Jenkins
+
 Once the setup completes, you can access (ports chosen to avoid local conflicts):
 
-- **Web Application**: http://localhost:8081
-- **Jenkins Dashboard**: http://localhost:9090/jenkins
+1. Go to **Manage Jenkins** → **Credentials**
 
-### 4. Configure Jenkins
+2. Click **System** → **Global credentials (unrestricted)**- **Web Application**: http://localhost:8081
 
-1. Access Jenkins at http://localhost:9090/jenkins
-2. Use the initial admin password displayed by the setup script (or retrieve it with):
+3. Click **Add Credentials**- **Jenkins Dashboard**: http://localhost:9090/jenkins
+
+   - Kind: Username with password
+
+   - Username: Your GitHub username### 4. Configure Jenkins
+
+   - Password: GitHub Personal Access Token
+
+   - ID: `github-token`1. Access Jenkins at http://localhost:9090/jenkins
+
+4. Click **Create**2. Use the initial admin password displayed by the setup script (or retrieve it with):
+
    ```bash
-   docker exec jenkins-cicd cat /var/jenkins_home/secrets/initialAdminPassword
-   ```
-3. Install suggested plugins
-4. Create your first admin user
+
+**Create GitHub Token:** https://github.com/settings/tokens   docker exec jenkins-cicd cat /var/jenkins_home/secrets/initialAdminPassword
+
+- Generate new token (classic)   ```
+
+- Select scopes: `repo` (all)3. Install suggested plugins
+
+- Copy the token4. Create your first admin user
+
 5. Start creating pipelines!
+
+### 2. Create Multibranch Pipeline
 
 ## 📁 Project Structure
 
-```
-CICD-project/
-├── docker-compose.yml          # Docker Compose configuration
-├── Jenkinsfile                 # Jenkins pipeline definition
-├── README.md                   # This file
-├── .gitignore                 # Git ignore rules
-├── jenkins/
-│   └── Dockerfile             # Custom Jenkins image with plugins
+1. Jenkins Dashboard → **New Item**
+
+2. Name: `CICD-project````
+
+3. Type: **Multibranch Pipeline** → OKCICD-project/
+
+4. **Branch Sources** → **Add source** → **Git**├── docker-compose.yml          # Docker Compose configuration
+
+   - Project Repository: `https://github.com/Kiran-Kumar-20/CICD-project.git`├── Jenkinsfile                 # Jenkins pipeline definition
+
+   - Credentials: Select `github-token`├── README.md                   # This file
+
+5. **Build Configuration** → Script Path: `Jenkinsfile`├── .gitignore                 # Git ignore rules
+
+6. Click **Save**├── jenkins/
+
+7. Jenkins will automatically scan the repository and create jobs for each branch│   └── Dockerfile             # Custom Jenkins image with plugins
+
 ├── webapp/
-│   ├── Dockerfile             # Nginx web server image
+
+### 3. Run the Pipeline│   ├── Dockerfile             # Nginx web server image
+
 │   ├── nginx.conf             # Nginx configuration
-│   └── html/
-│       ├── index.html         # Sample web application
-│       ├── styles.css         # Styling
-│       └── script.js          # JavaScript functionality
-└── scripts/
-    ├── setup.sh               # Linux/WSL2 setup script
-    └── setup.bat              # Windows setup script
-```
+
+1. Click on your pipeline job│   └── html/
+
+2. Click on the `main` branch│       ├── index.html         # Sample web application
+
+3. Click **Build Now**│       ├── styles.css         # Styling
+
+4. Watch the pipeline execute through 5 stages:│       └── script.js          # JavaScript functionality
+
+   - Checkout└── scripts/
+
+   - Build    ├── setup.sh               # Linux/WSL2 setup script
+
+   - Test    └── setup.bat              # Windows setup script
+
+   - Deploy```
+
+   - Health Check
 
 ## 🔄 CI/CD Pipeline
 
+## Project Structure
+
 The Jenkins pipeline (`Jenkinsfile`) includes the following stages:
 
-1. **Checkout**: Pulls the latest code from GitHub
-2. **Build**: Builds the Docker image for the web application
-3. **Test**: Runs validation tests on the application
-4. **Deploy**: Deploys the application to the Nginx container
-5. **Health Check**: Verifies the application is running correctly
+```
 
-### Setting Up the Pipeline in Jenkins
+CICD-project/1. **Checkout**: Pulls the latest code from GitHub
 
-1. Log in to Jenkins at http://localhost:8080/jenkins
-2. Click "New Item"
-3. Enter a name (e.g., "webapp-pipeline")
-4. Select "Pipeline" and click OK
-5. Under "Pipeline" section, select "Pipeline script from SCM"
+├── docker-compose.yml      # Orchestrates Jenkins + Nginx containers2. **Build**: Builds the Docker image for the web application
+
+├── Jenkinsfile             # CI/CD pipeline definition3. **Test**: Runs validation tests on the application
+
+├── jenkins/4. **Deploy**: Deploys the application to the Nginx container
+
+│   └── Dockerfile          # Custom Jenkins image5. **Health Check**: Verifies the application is running correctly
+
+├── webapp/
+
+│   ├── Dockerfile          # Nginx web server### Setting Up the Pipeline in Jenkins
+
+│   ├── nginx.conf          # Nginx configuration
+
+│   └── html/               # Web application files1. Log in to Jenkins at http://localhost:8080/jenkins
+
+└── scripts/2. Click "New Item"
+
+    ├── setup.sh            # Linux/WSL2 setup script3. Enter a name (e.g., "webapp-pipeline")
+
+    └── setup.bat           # Windows setup script4. Select "Pipeline" and click OK
+
+```5. Under "Pipeline" section, select "Pipeline script from SCM"
+
 6. Choose "Git" as SCM
-7. Enter your repository URL
+
+## Common Commands7. Enter your repository URL
+
 8. Specify the branch (e.g., `*/main` or `*/master`)
-9. Script Path: `Jenkinsfile`
-10. Save and click "Build Now"
 
-## 🐳 Docker Commands
+### View Running Containers9. Script Path: `Jenkinsfile`
 
-### View Running Containers
-```bash
+```bash10. Save and click "Build Now"
+
 docker compose ps
-```
 
-### View Logs
-```bash
-# All services
-docker compose logs -f
+```## 🐳 Docker Commands
 
-# Specific service
-docker compose logs -f jenkins
-docker compose logs -f webapp
-```
 
-### Stop Services
-```bash
-docker compose down
-```
 
-### Restart Services
-```bash
-docker compose restart
-```
+### View Logs### View Running Containers
 
-### Rebuild Containers
-```bash
-docker compose down
-docker compose build --no-cache
+```bash```bash
+
+# All servicesdocker compose ps
+
+docker compose logs -f```
+
+
+
+# Specific service### View Logs
+
+docker compose logs -f jenkins```bash
+
+docker compose logs -f webapp# All services
+
+```docker compose logs -f
+
+
+
+### Stop Services# Specific service
+
+```bashdocker compose logs -f jenkins
+
+docker compose downdocker compose logs -f webapp
+
+``````
+
+
+
+### Restart Services### Stop Services
+
+```bash```bash
+
+docker compose restartdocker compose down
+
+``````
+
+
+
+### Rebuild Containers### Restart Services
+
+```bash```bash
+
+docker compose downdocker compose restart
+
+docker compose build --no-cache```
+
 docker compose up -d
+
+```### Rebuild Containers
+
+```bash
+
+## Pipeline Stagesdocker compose down
+
+docker compose build --no-cache
+
+The Jenkins pipeline automates:docker compose up -d
+
 ```
 
-## 🛠️ Customization
+1. **Checkout**: Pulls latest code from GitHub
 
-### Modifying the Web Application
+2. **Build**: Creates Docker image for web application## 🛠️ Customization
+
+3. **Test**: Validates required files exist
+
+4. **Deploy**: Updates the running Nginx container### Modifying the Web Application
+
+5. **Health Check**: Verifies application is accessible
 
 Edit files in `webapp/html/`:
-- `index.html` - Main HTML content
+
+## Troubleshooting- `index.html` - Main HTML content
+
 - `styles.css` - Styling
-- `script.js` - JavaScript functionality
 
-After making changes, rebuild and restart:
-```bash
+### Docker Desktop Not Running- `script.js` - JavaScript functionality
+
+```powershell
+
+Start-Process "C:\Program Files\Docker\Docker\Docker Desktop.exe"After making changes, rebuild and restart:
+
+``````bash
+
 docker compose restart webapp
-```
 
-Or trigger a Jenkins build to deploy automatically.
+Wait 15-30 seconds, then run `docker compose up -d````
 
-### Adding Jenkins Plugins
 
-Edit `jenkins/Dockerfile` and add plugins to the `jenkins-plugin-cli --plugins` line:
-```dockerfile
-RUN jenkins-plugin-cli --plugins \
-    git \
-    github \
-    your-new-plugin
-```
 
-Then rebuild:
-```bash
-docker compose build jenkins
-docker compose up -d
-```
+### Port ConflictsOr trigger a Jenkins build to deploy automatically.
 
-## 🔒 Security Notes
+If ports 8081 or 9090 are in use, edit `docker-compose.yml`:
 
-- The Jenkins initial admin password is auto-generated and displayed during setup
+```yaml### Adding Jenkins Plugins
+
+services:
+
+  jenkins:Edit `jenkins/Dockerfile` and add plugins to the `jenkins-plugin-cli --plugins` line:
+
+    ports:```dockerfile
+
+      - "9090:8080"  # Change left numberRUN jenkins-plugin-cli --plugins \
+
+  webapp:    git \
+
+    ports:    github \
+
+      - "8081:80"    # Change left number    your-new-plugin
+
+``````
+
+
+
+### Container ConflictsThen rebuild:
+
+```bash```bash
+
+docker rm -f jenkins-cicd webapp-serverdocker compose build jenkins
+
+docker compose up -ddocker compose up -d
+
+``````
+
+
+
+## Author## 🔒 Security Notes
+
+
+
+Kiran Kumar- The Jenkins initial admin password is auto-generated and displayed during setup
+
 - Change default passwords after first login
-- Configure GitHub webhooks for automatic builds on push
+
+## Repository- Configure GitHub webhooks for automatic builds on push
+
 - Use Jenkins credentials for sensitive information
-- Keep Docker Desktop and containers updated
+
+https://github.com/Kiran-Kumar-20/CICD-project- Keep Docker Desktop and containers updated
+
 
 ## 🐛 Troubleshooting
 
