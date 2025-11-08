@@ -197,7 +197,7 @@ git push origin feature/your-feature
 ```
 
 ## License 📜
-MIT
+This is just for demonstrating how Jenkins automation helps in web development 
 
 ## Author 👤
 M. Kiran Kumar Reddy
